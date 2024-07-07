@@ -178,7 +178,8 @@ return array(
 	# from the PHPMailer library.
 	#
 	# See https://phpmailer.github.io/PHPMailer/classes/PHPMailer-PHPMailer-PHPMailer.html#properties
-	'mailer' => 'mail', // 'mail' or 'smtp'
+	'mailer' => 'mail', // 'mail', 'sendmail' or 'smtp'
+	'sendmail' => '/usr/sbin/sendmail',
 	'smtp' => array(
 		'hostname' => '', // the domain used in the Message-ID header
 		'host' => 'localhost', // the SMTP server address

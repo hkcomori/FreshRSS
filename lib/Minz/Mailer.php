@@ -57,6 +57,7 @@ class Minz_Mailer {
 
 		$conf = Minz_Configuration::get('system');
 		$this->mailer = $conf->mailer;
+		$this->sendmail = $conf->sendmail;
 		$this->smtp_config = $conf->smtp;
 
 		// According to https://github.com/PHPMailer/PHPMailer/wiki/SMTP-Debugging#debug-levels
@@ -99,6 +100,9 @@ class Minz_Mailer {
 				$mail->Password = $this->smtp_config['password'];
 				$mail->SMTPSecure = $this->smtp_config['secure'];
 				$mail->Port = $this->smtp_config['port'];
+			{ elseif ($this->mailer === 'sendmail') {
+				$mail->isSendmail();
+				$mail->Sendmail = $this->sendmail;
 			} else {
 				$mail->isMail();
 			}
